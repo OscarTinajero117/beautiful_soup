@@ -6,6 +6,57 @@ import 'package:html/dom.dart';
 import 'interface/interface.dart';
 import 'tags.dart';
 
+/// The `Shared` class extends `Tags` and implements the interfaces `ITreeSearcher`
+/// and `IOutput`, providing a rich set of methods for querying and manipulating
+/// HTML elements in a document. This class is designed to search for specific
+/// elements, attributes, or patterns within an HTML structure using various
+/// matching criteria and selectors.
+///
+/// ## Methods Overview:
+///
+/// - `findFirstAny`: Retrieves the first element in the document, either the
+///    `<html>` element or any other element if `<html>` is not present.
+///
+/// - `find`: Searches for a specific element based on a variety of filters,
+///   including tag name, id, class, attributes, regex patterns, and CSS selectors.
+///
+/// - `findAll`: Similar to `find`, but returns a list of matching elements.
+///
+/// - `findParent`: Finds the nearest parent element matching the specified criteria.
+///
+/// - `findParents`: Retrieves a list of all parent elements matching the specified
+///   criteria, with an optional limit.
+///
+/// - `findNextSibling` and `findPreviousSibling`: Search for the next or previous
+///   sibling element matching the specified criteria.
+///
+/// - `findNextSiblings` and `findPreviousSiblings`: Retrieve lists of matching sibling
+///   elements with support for limits.
+///
+/// - `findNextElement` and `findPreviousElement`: Similar to sibling search but
+///   specifically targeting elements rather than nodes.
+///
+/// - `findAllNextElements` and `findAllPreviousElements`: Retrieve lists of all next
+///   or previous matching elements, with optional limits.
+///
+/// - `findNextParsed` and `findPreviousParsed`: Search for parsed nodes (e.g., text
+///   nodes) matching a specific pattern or node type in the forward or backward
+///   direction.
+///
+/// - `findNextParsedAll` and `findPreviousParsedAll`: Retrieve lists of parsed nodes
+///   in a specified direction, filtered by pattern or node type.
+///
+/// - `getText`: Collects all text content of the element, with optional stripping
+///   and separator settings.
+///
+/// - `prettify`: Provides a formatted string representation of the document for easy
+///   readability.
+///
+/// ## Usage:
+/// This class is highly flexible and can be used for complex querying within an
+/// HTML document. It can search by CSS selectors, attributes, IDs, classes, and
+/// even by specific regex patterns, making it suitable for applications where
+/// precise element targeting is necessary.
 class Shared extends Tags implements ITreeSearcher, IOutput {
   @override
   Bs4Element? findFirstAny() =>

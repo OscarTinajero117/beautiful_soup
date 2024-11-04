@@ -7,18 +7,22 @@ import 'helpers.dart';
 import 'interface/interface.dart';
 import 'shared.dart';
 
+/// Bs4Element class extends Shared and implements various interfaces for
+/// DOM manipulation and tree navigation, acting as a bridge between the
+/// BeautifulSoup library and Dart's HTML DOM representation.
 class Bs4Element extends Shared
     implements IElement, ITreeNavigator, ITreeModifier {
-  Bs4Element._(
-    Element element,
-  ) {
+  // Private constructor, initializing the element property.
+  Bs4Element._(Element element) {
     this.element = element;
   }
 
+  /// Factory constructor to create a Bs4Element instance with an Element.
   factory Bs4Element(Element element) => Bs4Element._(element);
 
   bool _isDecomposed = false;
 
+  /// Getter for decomposition status.
   bool get decomposed => _isDecomposed;
 
   Element get _element => element!;
